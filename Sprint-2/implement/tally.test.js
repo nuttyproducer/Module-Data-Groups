@@ -23,12 +23,38 @@ const tally = require("./tally.js");
 // Given an empty array
 // When passed to tally
 // Then it should return an empty object
-test.todo("tally on an empty array returns an empty object");
+
+test("tally on an empty array returns an empty object", () => {
+  expect(tally([])).toEqual({});
+});
 
 // Given an array with duplicate items
 // When passed to tally
 // Then it should return counts for each unique item
 
+test("Given an array of duplicate items, return counts for each unique item", () => {
+  expect(tally(["a", "a", "b", "b", "c"])).toEqual({ a: 2, b: 2, c: 1 });
+});
+
+// Test with 1 value in the array
+test("Given an array of duplicate items, return counts for each unique item", () => {
+  expect(tally(["a"])).toEqual({ a: 1 });
+});
+
 // Given an invalid input like a string
 // When passed to tally
 // Then it should throw an error
+
+test("Given an invalid input like string, trow error: The input is not an Array", () => {
+  expect(() => tally("Malakia not a string")).toThrow(
+    "The input is not an Array"
+  );
+});
+
+/*
+Remember: “toThrow needs a function, toEqual needs a value.
+If you want to test for an error, always wrap the function call in another function.
+
+expect(() => myFunc(badInput)).toThrow();
+
+*/
