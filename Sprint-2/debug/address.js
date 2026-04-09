@@ -4,6 +4,11 @@
 // but it isn't working...
 // Fix anything that isn't working
 
+/*
+When we test the file without fixing we get "My house number is [object Object]"
+We need to properly export the house number: adress.houseNumber.
+*/
+
 const address = {
   houseNumber: 42,
   street: "Imaginary Road",
@@ -12,4 +17,4 @@ const address = {
   postcode: "XYZ 123",
 };
 
-console.log(`My house number is ${address[0]}`);
+console.log(`My house number is ${address.houseNumber}`);
