@@ -1,15 +1,44 @@
+let secondsLeft; // Stores how many seconds are left in the countdown.
+let intervalId; // Stores the interval ID so the timer can be stopped later.
+
 function setAlarm() {
-  document.getElementById("timeValue").textContent = "00:00"; // This always makes sure the timer on the page is set to 00.00 when we reaload the page.
-  const seconds = document.getElementById("alarmSet").value; // We take the value input in seconds we have on the alarmSet id of the HTML page.
-  // Next part: Make sure we can convert our seconds into minutes and seconds and display them correctly inside the HTML file.
-  const totalSeconds = Number(seconds);
-  const mins = Math.floor(totalSeconds / 60);
-  const sec = totalSeconds % 60;
+  // Stop and reset the alarm sound before starting a new timer.
+  audio.loop = false;
+  audio.pause();
+  audio.currentTime = 0; // Reset the audio back to the beginning.
+
+  // Stop any previous countdown before starting a new one.
+  clearInterval(intervalId);
+
+  // Reset the background color when a new alarm is set.
+  document.body.style.backgroundColor = "white";
+
+  // Read the input value, convert it to a number, and show it immediately.
+  // This gives instant feedback instead of waiting one second for the interval.
+  const seconds = document.getElementById("alarmSet").value;
+  secondsLeft = Number(seconds);
+  const mins = Math.floor(secondsLeft / 60);
+  const sec = secondsLeft % 60;
   const timerDisplay = `${mins.toString().padStart(2, "0")}:${sec.toString().padStart(2, "0")}`;
-
   document.getElementById("timeValue").textContent = timerDisplay;
-}
 
+  // Run the countdown every second.
+  // Each tick reduces the remaining time, updates the display,
+  // and stops the timer when the countdown reaches zero.
+  intervalId = setInterval(() => {
+    secondsLeft--;
+    const mins = Math.floor(secondsLeft / 60);
+    const sec = secondsLeft % 60;
+    const timerDisplay = `${mins.toString().padStart(2, "0")}:${sec.toString().padStart(2, "0")}`;
+    document.getElementById("timeValue").textContent = timerDisplay;
+
+    if (secondsLeft <= 0) {
+      clearInterval(intervalId);
+      document.body.style.backgroundColor = "red";
+      playAlarm();
+    }
+  }, 1000);
+}
 
 // DO NOT EDIT BELOW HERE
 
@@ -26,10 +55,13 @@ function setup() {
 }
 
 function playAlarm() {
+  // Keep the alarm sound repeating until it is stopped.
+  audio.loop = true; // Repeat the sound continuously.
   audio.play();
 }
 
 function pauseAlarm() {
+  audio.loop = false; // Stop the looping sound.
   audio.pause();
 }
 
