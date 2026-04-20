@@ -20,8 +20,8 @@ function setAlarm() {
   const mins = Math.floor(secondsLeft / 60);
   const sec = secondsLeft % 60;
   const timerDisplay = `${mins.toString().padStart(2, "0")}:${sec.toString().padStart(2, "0")}`;
-  document.getElementById("timeValue").textContent = timerDisplay;
-
+  document.getElementById("timeRemaining").textContent =
+    `Time Remaining: ${timerDisplay}`;
   // Run the countdown every second.
   // Each tick reduces the remaining time, updates the display,
   // and stops the timer when the countdown reaches zero.
@@ -30,8 +30,8 @@ function setAlarm() {
     const mins = Math.floor(secondsLeft / 60);
     const sec = secondsLeft % 60;
     const timerDisplay = `${mins.toString().padStart(2, "0")}:${sec.toString().padStart(2, "0")}`;
-    document.getElementById("timeValue").textContent = timerDisplay;
-
+    document.getElementById("timeRemaining").textContent =
+      `Time Remaining: ${timerDisplay}`;
     if (secondsLeft <= 0) {
       clearInterval(intervalId);
       document.body.style.backgroundColor = "red";
@@ -39,6 +39,11 @@ function setAlarm() {
     }
   }, 1000);
 }
+
+// Expose functions globally so Jest tests can see them.
+window.setAlarm = setAlarm;
+window.playAlarm = playAlarm;
+window.pauseAlarm = pauseAlarm;
 
 // DO NOT EDIT BELOW HERE
 
