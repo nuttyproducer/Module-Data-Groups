@@ -1,1 +1,96 @@
-/** Write your CSS in here **/
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f4a63e;
+
+  min-height: 100vh;
+
+  padding: 24px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quotepanel {
+  background-color: white;
+
+  width: 100%;
+  max-width: 1000px;
+  min-height: 330px;
+
+  padding: 40px 50px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.quotebox {
+  gap: 16px;
+
+  display: flex;
+  align-items: flex-start;
+}
+
+.quote-symbol {
+  color: #f4a63e;
+
+  font-family: "Gill Sans", "Trebuchet MS", "Helvetica Neue", sans-serif;
+  font-size: 6.25rem;
+  font-weight: bold;
+  line-height: 0.8;
+
+  margin-top: -0.45rem;
+}
+
+.quotes {
+  color: #f4a63e;
+
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 2.4rem;
+  line-height: 1.25;
+
+  min-height: 6.25em;
+
+  margin: 0;
+
+  flex: 1;
+}
+
+.authors {
+  color: #f4a63e;
+
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.4rem;
+
+  margin: 0;
+
+  text-align: right;
+}
+
+.authors::before {
+  content: "- ";
+}
+
+.button-styling {
+  margin-top: auto;
+  padding-top: 20px;
+
+  display: flex;
+  justify-content: flex-end;
+}
+
+#new-quote {
+  background-color: #f4a63e;
+  color: white;
+
+  font-size: 1rem;
+
+  padding: 14px 22px;
+
+  border: none;
+
+  cursor: pointer;
+}

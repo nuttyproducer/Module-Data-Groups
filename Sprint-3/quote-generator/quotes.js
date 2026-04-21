@@ -1,3 +1,25 @@
+document.title = "Quote generator app";
+
+const domQuote = document.getElementById("quote");
+const domAuthor = document.getElementById("author");
+const newQuote = document.getElementById("new-quote");
+
+function showRandomQuote() {
+  const randomQuote = pickFromArray(quotes);
+
+  domQuote.textContent = randomQuote.quote;
+  domAuthor.textContent = randomQuote.author;
+}
+
+// Select the quote and author elements from the DOM.
+// Select the "New quote" button from the DOM.
+// Write a function to:
+// Pick a random quote object from the quotes array.
+// Set the quote element’s text to the quote.
+// Set the author element’s text to the author.
+// When the page loads, call this function to show a random quote.
+// When the button is clicked, call this function again to show a new random quote.
+
 // DO NOT EDIT BELOW HERE
 
 // pickFromArray is a function which will return one item, at
@@ -490,4 +512,5 @@ const quotes = [
   },
 ];
 
-// call pickFromArray with the quotes array to check you get a random quote
+showRandomQuote();
+newQuote.addEventListener("click", showRandomQuote);
