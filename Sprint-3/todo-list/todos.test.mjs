@@ -126,7 +126,7 @@ describe("toggleCompletedOnTask()", () => {
   });
 });
 
-describe("deletedCompleted()", () => {
+describe("deleteCompleted()", () => {
   test("removes all completed todos from the tasklist", () => {
     const todos = [
       { task: "A", completed: true },
