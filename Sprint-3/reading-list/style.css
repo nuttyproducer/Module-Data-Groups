@@ -8,8 +8,16 @@
 
 html,
 body {
-  font-family: "Source Sans Pro", -apple-system, system-ui, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family:
+    "Source Sans Pro",
+    -apple-system,
+    system-ui,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
 }
 
 .site-footer {
@@ -150,6 +158,14 @@ body {
 
 #greenBtn {
   background: #87ca8a;
+}
+
+.bookRead {
+  background-color: red;
+}
+
+.bookNotRead {
+  background-color: green;
 }
 
 @media screen and (min-width: 992px) {
