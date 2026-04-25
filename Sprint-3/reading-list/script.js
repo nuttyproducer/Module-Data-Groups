@@ -40,11 +40,11 @@ const bookList = document.getElementById("readingList");
 
 books.forEach((book) => {
   const list = document.createElement("li");
-
+  list.classList.add("book-card");
   if (book.alreadyRead) {
-    list.classList.add("bookNotread");
+    list.classList.add("bookNotRead");
   } else {
-    list.classList.add("BookRead");
+    list.classList.add("bookRead");
   }
 
   const bookTitle = document.createElement("h3");
