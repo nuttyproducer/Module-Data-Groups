@@ -41,7 +41,7 @@ h1 {
 .todo-input button {
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   border: none;
   border-radius: 6px;
@@ -93,12 +93,34 @@ h1 {
   height: 32px;
 }
 
-.complete-btn i {
-  color: green;
+.complete-btn .fa-check {
+  color: #888;
+}
+
+.todo-item.completed .complete-btn .fa-check {
+  color: rgb(14, 200, 14);
 }
 
 .delete-btn i {
   color: red;
+}
+
+#delete-completed-btn {
+  width: 100%;
+  padding: 12px 0;
+  font-size: 16px;
+  background-color: #e53935;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  margin-top: 0.5em;
+  transition: background 0.2s;
+}
+
+#delete-completed-btn:hover {
+  background-color: #b71c1c;
 }
 
 .todo-item.completed .description {
