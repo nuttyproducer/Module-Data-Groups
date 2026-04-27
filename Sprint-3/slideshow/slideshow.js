@@ -14,8 +14,15 @@ const images = [
 const imageElement = document.getElementById("carousel-img");
 const forwardBtn = document.getElementById("forward-btn");
 const backwardBtn = document.getElementById("backward-btn");
+const autoForwardBtn = document.getElementById("auto-forward-btn");
+const autoBackwardBtn = document.getElementById("auto-backward-btn");
+const playPauseBtn = document.getElementById("play-pause-btn");
 
 let currentImage = 0;
+let isPlaying = false;
+let playDirection = "forward";
+let autoPlayInterval = null;
+
 imageElement.src = images[currentImage];
 
 function showNextImage() {
@@ -34,5 +41,41 @@ function showPreviousImage() {
   imageElement.src = images[currentImage];
 }
 
-forwardBtn.addEventListener("click", showNextImage);
+function startAutoPlay(direction) {
+  if (isPlaying) {
+    pauseAutoPlay();
+  }
+  isPlaying = true;
+  playDirection = direction;
+  if (direction === "forward") {
+    autoPlayInterval = setInterval(showNextImage, 2000);
+  } else if (direction === "backward") {
+    autoPlayInterval = setInterval(showPreviousImage, 2000);
+  }
+}
+
+function pauseAutoPlay() {
+  if (autoPlayInterval !== null) {
+    clearInterval(autoPlayInterval);
+    isPlaying = false;
+    autoPlayInterval = null;
+  }
+}
+
+function togglePlayPause() {
+  if ((isPlaying = true)) {
+    pauseAutoPlay();
+  } else {
+    startAutoPlay(playDirection);
+  }
+}
+
+autoBackwardBtn.addEventListener("click", function () {
+  startAutoPlay("backward");
+});
 backwardBtn.addEventListener("click", showPreviousImage);
+playPauseBtn.addEventListener("click", togglePlayPause);
+forwardBtn.addEventListener("click", showNextImage);
+autoForwardBtn.addEventListener("click", function () {
+  startAutoPlay("forward");
+});
