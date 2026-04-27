@@ -49,8 +49,12 @@ function startAutoPlay(direction) {
   playDirection = direction;
   if (direction === "forward") {
     autoPlayInterval = setInterval(showNextImage, 2000);
+    autoForwardBtn.classList.add("active");
+    autoBackwardBtn.classList.remove("active");
   } else if (direction === "backward") {
     autoPlayInterval = setInterval(showPreviousImage, 2000);
+    autoBackwardBtn.classList.add("active");
+    autoForwardBtn.classList.remove("active");
   }
   updatePlayPauseBtn();
 }
@@ -61,6 +65,8 @@ function pauseAutoPlay() {
     isPlaying = false;
     autoPlayInterval = null;
   }
+  autoForwardBtn.classList.remove("active");
+  autoBackwardBtn.classList.remove("active");
   updatePlayPauseBtn();
 }
 
@@ -78,17 +84,29 @@ function togglePlayPause() {
 function updatePlayPauseBtn() {
   if (isPlaying) {
     playPauseBtn.textContent = "❚❚";
+    playPauseBtn.classList.add("active");
   } else {
     playPauseBtn.textContent = "►";
+    playPauseBtn.classList.remove("active");
   }
 }
 
 autoBackwardBtn.addEventListener("click", function () {
-  startAutoPlay("backward");
+  // Adding toggle start stop to the auto backward button
+  if (isPlaying && playDirection === "backward") {
+    pauseAutoPlay();
+  } else {
+    startAutoPlay("backward");
+  }
 });
 backwardBtn.addEventListener("click", showPreviousImage);
 playPauseBtn.addEventListener("click", togglePlayPause);
 forwardBtn.addEventListener("click", showNextImage);
 autoForwardBtn.addEventListener("click", function () {
-  startAutoPlay("forward");
+  // Adding toggle start stop to the auto forward button
+  if (isPlaying && playDirection === "forward") {
+    pauseAutoPlay();
+  } else {
+    startAutoPlay("forward");
+  }
 });

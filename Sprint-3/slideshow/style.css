@@ -25,23 +25,48 @@ body {
   margin: 30px;
   display: flex;
   gap: 30px;
+  align-items: center;
 }
 
 .carousel-buttons button {
   background: #ff00aa;
-  color: #fff;
+  color: #222;
   border: 4px solid #222;
   border-radius: 0px;
-  font-size: 2rem;
+  height: 70px;
+  min-width: 2.6em;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  font-size: 2.3rem;
   font-weight: bold;
   padding: 14px 32px;
   box-shadow: 4px 4px 0 #00ffe7;
   cursor: pointer;
 }
 
+#play-pause-btn {
+  min-width: 4.2em;
+}
+
 .carousel-buttons button:hover {
-  background: #00ffe7;
-  color: #222;
-  box-shadow: 4px 4px 0 #222;
-  border-color: #ff00aa;
+  background: #d3008d;
+}
+
+.carousel-buttons button:active {
+  background: #c40082;
+  color: #fff;
+  border-color: #222;
+  box-shadow: 3px 3px 0 #222;
+  transform: translate(3px, 3px);
+}
+
+.carousel-buttons button.active {
+  background: #c40082;
+  color: #fff;
+  border-color: #222;
+  box-shadow: 1px 1px 0 #00ffe7;
+  transform: translate(2px, 2px);
 }
