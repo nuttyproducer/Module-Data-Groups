@@ -52,6 +52,7 @@ function startAutoPlay(direction) {
   } else if (direction === "backward") {
     autoPlayInterval = setInterval(showPreviousImage, 2000);
   }
+  updatePlayPauseBtn();
 }
 
 function pauseAutoPlay() {
@@ -60,13 +61,25 @@ function pauseAutoPlay() {
     isPlaying = false;
     autoPlayInterval = null;
   }
+  updatePlayPauseBtn();
 }
 
 function togglePlayPause() {
-  if ((isPlaying = true)) {
+  if (isPlaying) {
     pauseAutoPlay();
+    updatePlayPauseBtn();
   } else {
     startAutoPlay(playDirection);
+  }
+}
+
+// Creating a button state helper for the play/pause button
+
+function updatePlayPauseBtn() {
+  if (isPlaying) {
+    playPauseBtn.textContent = "❚❚";
+  } else {
+    playPauseBtn.textContent = "►";
   }
 }
 
