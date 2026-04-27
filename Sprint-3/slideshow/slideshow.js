@@ -73,7 +73,6 @@ function pauseAutoPlay() {
 function togglePlayPause() {
   if (isPlaying) {
     pauseAutoPlay();
-    updatePlayPauseBtn();
   } else {
     startAutoPlay(playDirection);
   }
