@@ -4,23 +4,18 @@ const images = [
   "./assets/cute-cat-a.png",
   "./assets/cute-cat-b.jpg",
   "./assets/cute-cat-c.jpg",
-  "./assets/cute-cat-d.jpg",
-  "./assets/cute-cat-e.jpg",
-  "./assets/cute-cat-f.jpg",
-  "./assets/cute-cat-g.jpg",
 ];
 
 // Write your code here
 const imageElement = document.getElementById("carousel-img");
 const forwardBtn = document.getElementById("forward-btn");
 const backwardBtn = document.getElementById("backward-btn");
-const autoForwardBtn = document.getElementById("auto-forward-btn");
-const autoBackwardBtn = document.getElementById("auto-backward-btn");
+const autoForwardBtn = document.getElementById("auto-forward");
+const autoBackwardBtn = document.getElementById("auto-backward");
 const playPauseBtn = document.getElementById("play-pause-btn");
+const stopBtn = document.getElementById("stop");
 
 let currentImage = 0;
-let isPlaying = false;
-let playDirection = "forward";
 let autoPlayInterval = null;
 
 imageElement.src = images[currentImage];
@@ -70,14 +65,6 @@ function pauseAutoPlay() {
   updatePlayPauseBtn();
 }
 
-function togglePlayPause() {
-  if (isPlaying) {
-    pauseAutoPlay();
-  } else {
-    startAutoPlay(playDirection);
-  }
-}
-
 // Creating a button state helper for the play/pause button
 
 function updatePlayPauseBtn() {
@@ -99,7 +86,6 @@ autoBackwardBtn.addEventListener("click", function () {
   }
 });
 backwardBtn.addEventListener("click", showPreviousImage);
-playPauseBtn.addEventListener("click", togglePlayPause);
 forwardBtn.addEventListener("click", showNextImage);
 autoForwardBtn.addEventListener("click", function () {
   // Adding toggle start stop to the auto forward button
