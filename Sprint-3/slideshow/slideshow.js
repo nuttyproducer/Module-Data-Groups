@@ -12,7 +12,6 @@ const forwardBtn = document.getElementById("forward-btn");
 const backwardBtn = document.getElementById("backward-btn");
 const autoForwardBtn = document.getElementById("auto-forward");
 const autoBackwardBtn = document.getElementById("auto-backward");
-const playPauseBtn = document.getElementById("play-pause-btn");
 const stopBtn = document.getElementById("stop");
 
 let currentImage = 0;
@@ -37,61 +36,46 @@ function showPreviousImage() {
 }
 
 function startAutoPlay(direction) {
-  if (isPlaying) {
-    pauseAutoPlay();
-  }
-  isPlaying = true;
-  playDirection = direction;
-  if (direction === "forward") {
-    autoPlayInterval = setInterval(showNextImage, 2000);
-    autoForwardBtn.classList.add("active");
-    autoBackwardBtn.classList.remove("active");
-  } else if (direction === "backward") {
-    autoPlayInterval = setInterval(showPreviousImage, 2000);
-    autoBackwardBtn.classList.add("active");
-    autoForwardBtn.classList.remove("active");
-  }
-  updatePlayPauseBtn();
-}
-
-function pauseAutoPlay() {
   if (autoPlayInterval !== null) {
     clearInterval(autoPlayInterval);
-    isPlaying = false;
+  }
+
+  if (direction === "forward") {
+    autoPlayInterval = setInterval(showNextImage, 2000);
+  } else if (direction === "backward") {
+    autoPlayInterval = setInterval(showPreviousImage, 2000);
+  }
+
+  autoForwardBtn.disabled = true;
+  autoBackwardBtn.disabled = true;
+  stopBtn.textContent = "■";
+  stopBtn.setAttribute("aria-label", "Stop slideshow");
+}
+
+function stopAutoPlay() {
+  if (autoPlayInterval !== null) {
+    clearInterval(autoPlayInterval);
     autoPlayInterval = null;
   }
-  autoForwardBtn.classList.remove("active");
-  autoBackwardBtn.classList.remove("active");
-  updatePlayPauseBtn();
+  // Enable both auto buttons
+  autoForwardBtn.disabled = false;
+  autoBackwardBtn.disabled = false;
+  stopBtn.textContent = "►";
+  stopBtn.setAttribute("aria-label", "Start slideshow");
 }
 
-// Creating a button state helper for the play/pause button
-
-function updatePlayPauseBtn() {
-  if (isPlaying) {
-    playPauseBtn.textContent = "❚❚";
-    playPauseBtn.classList.add("active");
-  } else {
-    playPauseBtn.textContent = "►";
-    playPauseBtn.classList.remove("active");
-  }
-}
-
-autoBackwardBtn.addEventListener("click", function () {
-  // Adding toggle start stop to the auto backward button
-  if (isPlaying && playDirection === "backward") {
-    pauseAutoPlay();
-  } else {
-    startAutoPlay("backward");
-  }
-});
 backwardBtn.addEventListener("click", showPreviousImage);
 forwardBtn.addEventListener("click", showNextImage);
 autoForwardBtn.addEventListener("click", function () {
-  // Adding toggle start stop to the auto forward button
-  if (isPlaying && playDirection === "forward") {
-    pauseAutoPlay();
-  } else {
+  startAutoPlay("forward");
+});
+autoBackwardBtn.addEventListener("click", function () {
+  startAutoPlay("backward");
+});
+stopBtn.addEventListener("click", function () {
+  if (autoPlayInterval === null) {
     startAutoPlay("forward");
+  } else {
+    stopAutoPlay();
   }
 });

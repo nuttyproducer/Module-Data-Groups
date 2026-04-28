@@ -51,6 +51,11 @@ body {
   min-width: 4.2em;
 }
 
+#stop {
+  width: 4.2em;
+  padding: 14px 0;
+}
+
 .carousel-buttons button:hover {
   background: #d3008d;
 }
