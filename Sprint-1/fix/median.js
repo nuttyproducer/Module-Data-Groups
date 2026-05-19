@@ -40,8 +40,8 @@ function calculateMedian(list) {
     // Checks if the numbers in the array is odd. For example 3 numbers in the array.
     return sorted[Math.floor(n / 2)]; // Returns the middle number of the array. We count from 0 so for example 0, 1, "2", 3, 4.
   } else {
-    let mid1 = sorted[n / 2 - 1];
-    let mid2 = sorted[n / 2];
+    let mid1 = sorted[numbersAmount / 2 - 1];
+    let mid2 = sorted[numbersAmount / 2];
     return (mid1 + mid2) / 2; // We take the two middle numbers avarege with divide by 2 to get the median.
   }
 }
