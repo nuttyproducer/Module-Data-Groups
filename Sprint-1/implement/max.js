@@ -1,6 +1,6 @@
 function findMax(arrayElements) {
   let max = -Infinity; // define max first, if the array is empty, return -Infinity
-  for (i = 0; i < arrayElements.length; i++) {
+  for (let i = 0; i < arrayElements.length; i++) {
     if (typeof arrayElements[i] === "number") {
       // first checks if the array element is a number before moving on.
       if (arrayElements[i] > max) {
