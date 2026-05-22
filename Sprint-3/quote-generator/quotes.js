@@ -11,31 +11,7 @@ function showRandomQuote() {
   domAuthor.textContent = randomQuote.author;
 }
 
-// Select the quote and author elements from the DOM.
-// Select the "New quote" button from the DOM.
-// Write a function to:
-// Pick a random quote object from the quotes array.
-// Set the quote element’s text to the quote.
-// Set the author element’s text to the author.
-// When the page loads, call this function to show a random quote.
-// When the button is clicked, call this function again to show a new random quote.
-
 // DO NOT EDIT BELOW HERE
-
-// pickFromArray is a function which will return one item, at
-// random, from the given array.
-//
-// Parameters
-// ----------
-// choices: an array of items to pick from.
-//
-// Returns
-// -------
-// One item at random from the given array.
-//
-// Examples of use
-// ---------------
-// pickFromArray(['a','b','c','d'])     // maybe returns 'c'
 
 // You don't need to change this function
 function pickFromArray(choices) {
